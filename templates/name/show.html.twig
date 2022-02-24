@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nom{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-4">Nom de l'élève</h1>
+
+    <table class="table container mt-4 text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>FirstName</th>
+
+            </tr>
+        </thead>
+        <tbody class="text-dark">
+            <tr>
+                <td class="align-middle">{{ name.Name |capitalize }}</td>
+                <td class="align-middle">{{ name.FirstName |capitalize }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <a class="btn btn-secondary m-2" href="{{ path('name_index') }}">Retour à la liste <img src="https://img.icons8.com/plasticine/30/000000/return.png"/></a>
+        <a class="btn btn-warning m-2" href="{{ path('name_edit', {'id': name.id}) }}">Modifier<img src="https://img.icons8.com/external-itim2101-lineal-color-itim2101/30/000000/external-pen-stationery-and-office-itim2101-lineal-color-itim2101.png"/></a>
+    </div>
+    <div class="text-center">
+        {{ include('name/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier élève{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-4">Modifier élève</h1>
+    {{ include('name/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <div class="text-center">
+        {{ include('name/_delete_form.html.twig') }}
+        <a class="btn btn-secondary mt-4" href="{{ path('name_index') }}">Retour à la liste</a>
+    </div>
+{% endblock %}
