@@ -40,10 +40,10 @@ class NameController extends AbstractController
             $listSpeeches->setFirstName($draw->getFirstName());
             $entityManager->persist($listSpeeches);
             $entityManager->flush();
+            $listSpeeche = $listSpeechesRepository->findAll();
         }
 
         $addName = new Name();
-
         $addForm = $this->createForm(NameType::class, $addName);
         $addForm->handleRequest($request);
         if ($addForm->isSubmitted() && $addForm->isValid()) {

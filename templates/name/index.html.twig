@@ -15,67 +15,78 @@
         </div>
 
     <h2 class="text-center mt-4">Ajouter un nouvelle élève</h2>
+
         {{ include('name/_form.html.twig') }}
+
     <h2 class="text-center mt-4">Liste des élèves</h2>
-        <table class="table container mt-4 text-center">
-            <thead class="thead-dark">
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody class="text-dark">
-            {% for name in names %}
+        <div class="m-2">
+            <table class="table container mt-4 text-center">
+                <thead class="thead-dark">
                 <tr>
-                    <td class="align-middle">{{ name.Name |capitalize }}</td>
-                    <td class="align-middle">{{ name.FirstName |capitalize }}</td>
-                    <td class="align-middle">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <div>
-                                <a class="btn  btn-secondary m-1" href="{{ path('name_show', {'id': name.id}) }}">
-                                    <img src="https://img.icons8.com/office/30/000000/visible--v1.png" alt="Voir"/></a>
-                            </div>
-                            <div>
-                                <a class="btn btn-warning m-1" href="{{ path('name_edit', {'id': name.id}) }}">
-                                    <img src="https://img.icons8.com/external-itim2101-lineal-color-itim2101/30/000000/external-pen-stationery-and-office-itim2101-lineal-color-itim2101.png" alt="Modifier"/></a>
-                            </div>
-                            {{ include('name/_delete_form.html.twig') }}
-                        </div>
-                    </td>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Actions</th>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">Aucun résultat</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-dark">
+                {% for name in names %}
+                    <tr>
+                        <td class="align-middle">{{ name.Name |capitalize }}</td>
+                        <td class="align-middle">{{ name.FirstName |capitalize }}</td>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center align-items-center flex-wrap">
+                                <div>
+                                    <a class="btn  btn-secondary m-1" href="{{ path('name_show', {'id': name.id}) }}">
+                                        <img src="https://img.icons8.com/office/30/000000/visible--v1.png" alt="Voir"/></a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-warning m-1" href="{{ path('name_edit', {'id': name.id}) }}">
+                                        <img src="https://img.icons8.com/external-itim2101-lineal-color-itim2101/30/000000/external-pen-stationery-and-office-itim2101-lineal-color-itim2101.png" alt="Modifier"/></a>
+                                </div>
+                                {{ include('name/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun résultat</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
     <h2 class="text-center mt-4">Liste des élèves déjà passé</h2>
-        <table class="table container mt-4 text-center">
-            <thead class="thead-dark">
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-            </tr>
-            </thead>
-            <tbody class="text-dark">
-            {% for listSpeeche in listSpeeches %}
+
+        <div class="m-2">
+            <table class="table container mt-4 text-center">
+                <thead class="thead-dark">
                 <tr>
-                    <td>{{ listSpeeche.name |capitalize }}</td>
-                    <td>{{ listSpeeche.firstName |capitalize }}</td>
+                    <th>Nom</th>
+                    <th>Prénom</th>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">Aucun résultat</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-dark">
+                {% for listSpeeche in listSpeeches %}
+                    <tr>
+                        <td>{{ listSpeeche.name |capitalize }}</td>
+                        <td>{{ listSpeeche.firstName |capitalize }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun résultat</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
         <div class="text-center mb-4">
             {{ form_start(deleteForm) }}
             {{ form_widget(deleteForm) }}
-            <button class="btn btn-danger">{{ button_label|default('') }} <img src="https://img.icons8.com/stickers/30/000000/trash.png" alt="Supprimer"/></button>
+            <button class="btn btn-danger">{{ button_label|default('') }}
+                <img src="https://img.icons8.com/stickers/30/000000/trash.png" alt="Supprimer"/></button>
             {{ form_end(deleteForm) }}
         </div>
 {% endblock %}
